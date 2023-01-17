@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_centerHorizontal="false">
+
+    <data>
+
+        <variable
+            name="noteListViewModel"
+            type="com.example.mobileproject.notelist.NoteListViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".notelist.NoteListFragment">
+
+        <TextView
+            android:id="@+id/weather_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@{noteListViewModel.weatherReport}"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/all_notes_recycler_view"
+            tools:text="weatherReport" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/all_notes_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="50dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/delete_all_notes_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weather_report" />
+
+        <TextView
+            android:id="@+id/empty_list_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/empty_list_label"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="italic|bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/all_notes_recycler_view" />
+
+        <Button
+            android:id="@+id/delete_all_notes_button"
+            style="@style/style_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> noteListViewModel.onDeleteAllClicked()}"
+            android:text="@string/delete_all_notes"
+            android:textColor="@color/black"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/add_new_note_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/add_new_note_button"
+            tools:ignore="TextContrastCheck" />
+        
+        <Button
+            android:id="@+id/add_new_note_button"
+            style="@style/style_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> noteListViewModel.onAddNewButtonClicked()}"
+            android:text="@string/add_new_note"
+            android:textColor="@color/black"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="note"
+            type="com.example.mobileproject.database.Note" />
+
+        <variable
+            name="onEditNoteClickedListener"
+            type="com.example.mobileproject.notelist.NoteListener" />
+        <variable
+            name="onClickEditNoteListener"
+            type="com.example.mobileproject.notelist.NoteListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/yellow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:onClick="@{() -> onEditNoteClickedListener.onClick(note)}">
+
+        <TextView
+            android:id="@+id/note_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{note.noteTitle}"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/note_creationDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="test_title" />
+
+        <ImageView
+            android:id="@+id/calendar_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/calendar_icon_description"
+            android:src="@drawable/calendar_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/note_title"
+            app:layout_constraintEnd_toStartOf="@+id/note_creationDate"
+            app:layout_constraintTop_toTopOf="@+id/note_title" />
+
+        <TextView
+            android:id="@+id/note_creationDate"
+            noteCreationDateFormatted="@{note}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/note_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/note_title"
+            tools:text="test_creationDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

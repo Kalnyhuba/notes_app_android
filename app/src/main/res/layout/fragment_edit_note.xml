@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+        name="editNoteViewModel"
+        type="com.example.mobileproject.editnote.EditNoteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/yellow"
+        tools:context=".editnote.EditNoteFragment">
+
+        <ScrollView
+            android:id="@+id/scrollView_edit_note"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/edit_note_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{editNoteViewModel.note.noteTitle}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="test_title" />
+
+                <EditText
+                    android:id="@+id/edit_note_editTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:autofillHints="Title"
+                    android:background="@color/transparent"
+                    android:gravity="start|center"
+                    android:hint="@{editNoteViewModel.note.noteTitle}"
+                    android:inputType="textMultiLine"
+                    android:minHeight="48dp"
+                    android:text="@{editNoteViewModel.note.noteTitle}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:text="test_title_edit" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/yellow" />
+
+                <TextView
+                    android:id="@+id/edit_note_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@{editNoteViewModel.note.noteDescription}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:text="test_description" />
+
+                <EditText
+                    android:id="@+id/edit_note_editDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:autofillHints="Description"
+                    android:background="@color/transparent"
+                    android:gravity="start|top"
+                    android:hint="@{editNoteViewModel.note.noteDescription}"
+                    android:inputType="textMultiLine"
+                    android:minHeight="48dp"
+                    android:text="@{editNoteViewModel.note.noteDescription}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    tools:text="test_description_edit" />
+
+                <TextView
+                    android:id="@+id/note_timeCreated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@{editNoteViewModel.noteCreationDateFormatted}"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    tools:text="test_timeCreated" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/delete_note_button"
+            style="@style/style_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/delete_note_button"
+            android:onClick="@{() -> editNoteViewModel.onClickDeleteButton()}"
+            app:backgroundTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/back_button_edit_note"
+            style="@style/style_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> editNoteViewModel.onClickBackButton()}"
+            android:text="@string/back_button_edit_note"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@+id/delete_note_button"
+            app:layout_constraintEnd_toStartOf="@+id/edit_note_button"
+            app:layout_constraintStart_toEndOf="@+id/delete_note_button"
+            app:layout_constraintTop_toTopOf="@+id/delete_note_button" />
+
+        <Button
+            android:id="@+id/edit_note_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="@string/edit_note"
+            android:onClick="@{() -> editNoteViewModel.onClickEditButton()}"
+            app:backgroundTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@+id/delete_note_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/delete_note_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

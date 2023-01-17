@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="back_button">Back</string>
+    <string name="add_button">Add</string>
+    <string name="note_title">Title</string>
+    <string name="note_description">Description</string>
+    <string name="empty_list_label">No notes yet. Add one using the button in the bottom right corner.</string>
+    <string name="delete_all_notes">Delete all</string>
+    <string name="add_new_note">Add new note</string>
+    <string name="delete_note_button">Delete</string>
+    <string name="back_button_edit_note">Back</string>
+    <string name="edit_note">Edit</string>
+    <string name="header_label">Notes</string>
+    <string name="calendar_icon_description">Creation date icon</string>
+    <string name="notes_icon">App icon</string>
+</resources>
